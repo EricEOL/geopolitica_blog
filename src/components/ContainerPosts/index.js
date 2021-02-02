@@ -1,22 +1,26 @@
 import styled from 'styled-components';
 
-export const ContainerPostsStyle = styled.div`
+export const ContainerPostsStyle = styled.main`
+    flex: 1;
     display: flex;
     flex-direction: column;
 
-    width: 80%;
-    padding: 12px;
+    padding-bottom: 24px;
 
-    margin: 12px auto;
-
-    background-color: ${({theme})=> theme.colors.secondary};
-    box-shadow: 1px 1px 16px ${({theme})=> theme.colors.boxShadowColor};
     border-radius: 4px;
+
+    h1 {
+        /* text-align: center; */
+        margin-bottom: 16px;
+
+        color: ${({ theme }) => theme.colors.primary}
+    }
 `
 
-function ContainerPosts({children}) {
+function ContainerPosts({ children }) {
     return (
         <ContainerPostsStyle>
+            <h1>Últimas Matérias</h1>
             {children}
         </ContainerPostsStyle>
     )

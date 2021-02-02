@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
 
     font-family: 'Montserrat', sans-serif;;
-    color: ${({theme})=> theme.colors.contrastText };
+    color: ${({theme})=> theme.colors.primary };
   }
 `
 
