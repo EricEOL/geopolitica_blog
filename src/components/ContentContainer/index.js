@@ -10,6 +10,11 @@ export const ContentContainerStyle = styled.main`
     h1 {
         font-size: 25px;
     }
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 function ContentContainer({ children }) {
