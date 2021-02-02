@@ -1,0 +1,12 @@
+{
+    "theme": {
+        "colors": {
+            "primary": "#3E4733",
+            "secondary": "#F6F4F4",
+            "mainBg": "#121612", 
+            "contrastText": "#FFFFFF",
+            "boxShadowColor": "#999"
+        },
+        "border-radius": "4px"
+    }
+}

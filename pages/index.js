@@ -1,10 +1,17 @@
-import styled from 'styled-components'
+import Menu from '../src/components/Menu';
+import ContainerPosts from '../src/components/ContainerPosts';
+import Banner from '../src/components/Banner';
+import Post from '../src/components/Post';
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
 
 export default function Home() {
-  return <Title>My page</Title>
+  return (
+    <>
+      <Menu />
+      <Banner />
+      <ContainerPosts>
+        <Post title="Israel e suas peculiaridades" />
+      </ContainerPosts>
+    </>
+  )
 }

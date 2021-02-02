@@ -1,24 +1,41 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import styleSettings from '../styleSettings.json';
+import Head from 'next/head';
 
 const GlobalStyle = createGlobalStyle`
-  body {
+
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+
+  body {
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Montserrat', sans-serif;;
+    color: ${({theme})=> theme.colors.contrastText };
+  }
 `
 
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-}
+const theme = styleSettings.theme;
 
 export default function App({ Component, pageProps }) {
+
   return (
     <>
-      <GlobalStyle />
+      <Head>
+        <title>Geopolítica Blog</title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+
+      </Head>
+
+
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
