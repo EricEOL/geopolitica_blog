@@ -66,7 +66,7 @@ export const MainContainer = styled.div`
         padding: 0;
 
         h1 {
-            font-size: 50px;
+            font-size: 35px;
         }
         h2 {
             font-size: 20px;
