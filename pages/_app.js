@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    -webkit-font-smoothing: antialiased;
   }
 
   body {
@@ -30,9 +32,8 @@ export default function App({ Component, pageProps }) {
 
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
-
+        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700&display=swap" rel="stylesheet" />
       </Head>
-
 
       <ThemeProvider theme={theme}>
         <GlobalStyle />

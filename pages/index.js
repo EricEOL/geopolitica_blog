@@ -111,7 +111,7 @@ export const Button = styled.button`
         box-shadow: 0 0 5px #2EDC8D,
                     0 0 25px #2EDC8D,
                     0 0 50px #2EDC8D,
-                    0 0 200px #2EDC8D;
+                    0 0 100px #2EDC8D;
     }
 `
 

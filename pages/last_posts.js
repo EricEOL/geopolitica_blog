@@ -3,27 +3,72 @@ import Menu from '../src/components/Menu';
 import Loading from '../src/components/Loading';
 import dbposts from '../dbposts.json';
 
-export const ContainerCards = styled.div`
+export const Container = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    flex-direction: column;
     
     width: 100%;
     height: 94vh;
 
-    background-color: ${({theme})=> theme.colors.mainBg};
+    background-color: ${({ theme }) => theme.colors.mainBg};
 
+    @media (max-width: 768px) {
+        height: 100%;
+    }
+
+`
+
+Container.General = styled.div`
+    width: 100%;
+    text-align: center;
+
+    padding: 20px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    button {
+        width: 150px;
+        height: 40px;
+
+        outline: none;
+
+        margin-top: 16px;
+
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        border: none;
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+
+        &:hover {
+        background: #2EDC8D;
+
+        box-shadow: 0 0 5px #2EDC8D,
+                    0 0 25px #2EDC8D
+        }
+    }
+`
+
+Container.Content = styled.div`
+    display: flex; 
+    align-items: center;
+    justify-content: space-evenly;
+    
     @media (max-width: 768px) {
         display: flex;
         flex-direction: column;
-
-        height: 100%;
 
         padding: 8px;
     }
 `
 
-ContainerCards.Card = styled.div`
+Container.Card = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -36,17 +81,17 @@ ContainerCards.Card = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-image: 
-        linear-gradient(transparent, ${({theme})=> theme.colors.mainBg}), 
+        linear-gradient(transparent, ${({ theme }) => theme.colors.mainBg}), 
         url(${({ backgroundImage }) => backgroundImage});
 
     border-bottom: 1px solid transparent;
-    border-image: linear-gradient(to right, #2EDC8D , ${({theme})=> theme.colors.mainBg});
+    border-image: linear-gradient(to right, #2EDC8D , ${({ theme }) => theme.colors.mainBg});
     border-image-slice: 1;
     
     opacity: 0.7;
     cursor: pointer;
 
-    color: ${({theme})=> theme.colors.contrastText};
+    color: ${({ theme }) => theme.colors.contrastText};
 
     h2 {
         margin-bottom: 8px;
@@ -64,7 +109,7 @@ ContainerCards.Card = styled.div`
         transform: scale(1.1);
 
         border-bottom: 2px solid transparent;
-        border-image: linear-gradient(to left, #2EDC8D , ${({theme})=> theme.colors.mainBg});
+        border-image: linear-gradient(to left, #2EDC8D , ${({ theme }) => theme.colors.mainBg});
         border-image-slice: 1;
 
         opacity: 1;
@@ -86,18 +131,26 @@ ContainerCards.Card = styled.div`
 
 function PostCards() {
     return (
-        <ContainerCards>
-        {dbposts.posts.map(post=>(
-            <ContainerCards.Card backgroundImage={post.imageUrl}>
-                    <div style={{display: 'flex', flexDirection: 'column', margin: '4px', width: '80%' }}>
-                        <h2>{post.title}</h2>
+        <>
+            <Container>
+                <Container.General>Os mais recentes</Container.General>
 
-                        <strong>{`Por: ${post.author}`}</strong>
-                        <span>{`Em: ${post.date}`}</span>
-                    </div>
-            </ContainerCards.Card>
-        ))}
-        </ContainerCards>
+                <Container.Content>
+                    {dbposts.posts.map(post => (
+                        <Container.Card backgroundImage={post.imageUrl}>
+                            <div style={{ display: 'flex', flexDirection: 'column', margin: '4px', width: '80%' }}>
+                                <h2>{post.title}</h2>
+
+                                <strong>{`Por: ${post.author}`}</strong>
+                                <span>{`Em: ${post.date}`}</span>
+                            </div>
+                        </Container.Card>
+                    ))}
+                </Container.Content>
+
+                <Container.General><button>Quero ler outros</button></Container.General>
+            </Container>
+        </>
     )
 }
 
@@ -108,18 +161,46 @@ const screenStates = {
 
 function lastPosts() {
     const [screenState, setScreenState] = React.useState(screenStates.LOADING);
-    
-    React.useEffect(()=>{
-        setTimeout(()=>{
+
+    function handleChangePageState() {
+        setScreenState(screenStates.BLOG);
+    }
+
+    React.useEffect(() => {
+        setTimeout(() => {
             setScreenState(screenStates.BLOG);
-        }, 2 * 1000)
-    }, []);
+        }, 7 * 1000)
+    }, [screenState]);
 
     return (
         <>
             <Menu />
-            {screenState === screenStates.LOADING && <Loading/>}
-            {screenState === screenStates.BLOG && <PostCards/>}
+            {screenState === screenStates.LOADING && (
+                <>
+                    <Loading />
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        width: '100%',
+                    }}>
+                        <button
+                            style={{
+                                right: 1,
+                                backgroundColor: '#000',
+                                color: '#fff',
+                                width: '100px',
+                                height: '30px',
+                                fontSize: '12px',
+                                border: 'none',
+                                borderRadius: '8px',
+                                cursor: 'pointer'
+                            }}
+                            onClick={handleChangePageState}>PULAR
+                        </button>
+                    </div>
+                </>
+            )}
+            {screenState === screenStates.BLOG && <PostCards />}
         </>
     )
 }
