@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import Menu from '../src/components/Menu';
 import Loading from '../src/components/Loading';
 import dbposts from '../dbposts.json';
+import Link from 'next/link';
 
 export const Container = styled.div`
     display: flex;
@@ -26,6 +27,8 @@ Container.General = styled.div`
 
     font-size: 20px;
     font-weight: 700;
+
+    color: #2EDC8D;
 
     button {
         width: 150px;
@@ -137,7 +140,9 @@ function PostCards() {
 
                 <Container.Content>
                     {dbposts.posts.map(post => (
-                        <Container.Card backgroundImage={post.imageUrl}>
+                        <Link href={`/blog/${post.id}___${post.title}`}>
+                        <Container.Card 
+                            backgroundImage={post.imageUrl}>
                             <div style={{ display: 'flex', flexDirection: 'column', margin: '4px', width: '80%' }}>
                                 <h2>{post.title}</h2>
 
@@ -145,6 +150,7 @@ function PostCards() {
                                 <span>{`Em: ${post.date}`}</span>
                             </div>
                         </Container.Card>
+                        </Link>
                     ))}
                 </Container.Content>
 

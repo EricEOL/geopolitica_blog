@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 const MenuStyle = styled.header`
@@ -16,6 +17,7 @@ const MenuStyle = styled.header`
     background-color: ${({theme})=> theme.colors.mainBg};
 
     h1 {
+        cursor: pointer;
         color: ${({theme})=> theme.colors.contrastText};
     }
 
@@ -27,7 +29,7 @@ const MenuStyle = styled.header`
 export default function Menu() {
     return (
         <MenuStyle>
-            <h1>GeopolíticaBlog</h1>
+            <Link href="/"><h1>GeopolíticaBlog</h1></Link>
         </MenuStyle>
     );
 };

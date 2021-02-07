@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const ContentContainerStyle = styled.main`
     display: flex;
+    justify-content: center;
+    width: 100%;
 
     padding: 8px;
 

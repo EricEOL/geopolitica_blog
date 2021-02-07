@@ -8,16 +8,7 @@ export const LoadingContainer = styled.div`
     justify-content: center;
 
     width: 100%;
-    height: 82vh;
-
-    button {
-        position: absolute;
-        bottom: 1;
-
-        z-index: 1;
-
-        cursor: pointer;
-    }
+    height: 80vh;
 `
 
 LoadingContainer.AnimatedRetangle = styled.div`

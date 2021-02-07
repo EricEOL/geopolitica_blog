@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const ContainerPostsStyle = styled.main`
-    flex: 1;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 
     padding-bottom: 24px;
 
@@ -20,7 +20,6 @@ export const ContainerPostsStyle = styled.main`
 function ContainerPosts({ children }) {
     return (
         <ContainerPostsStyle>
-            <h1>Últimas Matérias</h1>
             {children}
         </ContainerPostsStyle>
     )

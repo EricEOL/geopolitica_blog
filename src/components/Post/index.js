@@ -4,7 +4,7 @@ export const PostStyle = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 100%;
+    width: 70%;
     padding: 12px;
     /* margin: 0 auto; */
 
@@ -19,6 +19,10 @@ export const PostStyle = styled.div`
         font-weight: bold;
 
         color: ${({ theme }) => theme.colors.primary};
+    }
+
+    @media (max-width: 768px) {
+        width: 95%;
     }
 `;
 
@@ -66,19 +70,19 @@ function PostContent({text, img, alt}) {
     )
 }
 
-function PostHeaderImg({ url, alt }) {
+function PostHeaderImg({ headerUrl, alt }) {
     return (
         <PostStyle.HeaderImg>
-            <img src={url} alt={alt} />
+            <img src={headerUrl} alt={alt} />
         </PostStyle.HeaderImg>
     )
 }
 
-function Post({ title, text, alt, img }) {
+function Post({ title, text, alt, img, headerUrl }) {
     return (
         <PostStyle>
             <PostStyle.Header>
-                <PostHeaderImg url={"https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg"} alt={"Israel"} />
+                <PostHeaderImg headerUrl={headerUrl} alt={"Israel"} />
                 <h2>{title}</h2>
             </PostStyle.Header>
             <PostContent text={text} alt={alt} img={img} />
