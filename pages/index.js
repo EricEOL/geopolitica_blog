@@ -128,7 +128,7 @@ function Home() {
                     justifyContent: 'center',
                     width: '50%'
                 }}>
-                    <Link href="/home"><Button>Entrar</Button></Link>
+                    <Link href="/last_posts"><Button>Entrar</Button></Link>
                 </div>
             </MainContainer>
         </Background>
