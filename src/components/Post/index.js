@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import parse from 'html-react-parser';
 
 export const PostStyle = styled.div`
     display: flex;
@@ -30,6 +31,10 @@ PostStyle.Header = styled.header`
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    h2 {
+        font-size: 30px;
+    }
 `;
 
 PostStyle.HeaderImg = styled.div`
@@ -64,7 +69,7 @@ PostStyle.Content = styled.div`
 function PostContent({text, img, alt}) {
     return (
         <PostStyle.Content>
-            <p>{text}</p>
+            <p>{parse(text)}</p>
             <img src={img} alt={alt}/>
         </PostStyle.Content>
     )

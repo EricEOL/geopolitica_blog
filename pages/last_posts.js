@@ -139,9 +139,12 @@ function PostCards() {
                 <Container.General>Os mais recentes</Container.General>
 
                 <Container.Content>
-                    {dbposts.posts.map(post => (
+                    {dbposts.posts.map((post, index) => {
+                        
+                        if(index <= 2) {
+                        return (
                         <Link href={`/blog/${post.id}___${post.title}`}>
-                        <Container.Card 
+                        <Container.Card
                             backgroundImage={post.imageUrl}>
                             <div style={{ display: 'flex', flexDirection: 'column', margin: '4px', width: '80%' }}>
                                 <h2>{post.title}</h2>
@@ -151,7 +154,7 @@ function PostCards() {
                             </div>
                         </Container.Card>
                         </Link>
-                    ))}
+                    )}})}
                 </Container.Content>
 
                 <Container.General><button>Quero ler outros</button></Container.General>
