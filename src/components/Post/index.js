@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import parse from 'html-react-parser';
+import leftArrow from '../../assets/leftArrow.png';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export const PostStyle = styled.div`
     display: flex;
@@ -29,7 +32,7 @@ export const PostStyle = styled.div`
 
 PostStyle.Header = styled.header`
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 
     h2 {
@@ -66,11 +69,11 @@ PostStyle.Content = styled.div`
     }
 `;
 
-function PostContent({text, img, alt}) {
+function PostContent({ text, img, alt }) {
     return (
         <PostStyle.Content>
             <p>{parse(text)}</p>
-            <img src={img} alt={alt}/>
+            <img src={img} alt={alt} />
         </PostStyle.Content>
     )
 }
@@ -87,8 +90,15 @@ function Post({ title, text, alt, img, headerUrl }) {
     return (
         <PostStyle>
             <PostStyle.Header>
-                <PostHeaderImg headerUrl={headerUrl} alt={"Israel"} />
-                <h2>{title}</h2>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <PostHeaderImg headerUrl={headerUrl} alt={"Israel"} />
+                    <h2>{title}</h2>
+                </div>
+                <div style={{cursor: 'pointer'}}>
+                    <Link href="/blog/all_posts">
+                        <Image src={leftArrow} width={30} height={30} />
+                    </Link>
+                </div>
             </PostStyle.Header>
             <PostContent text={text} alt={alt} img={img} />
         </PostStyle>

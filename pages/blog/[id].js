@@ -29,7 +29,6 @@ export default function UniquePost({ post }) {
 export async function getServerSideProps(context) {
 
     const [postId, postTitle] = context.query.id.split('___')
-    console.log(postId);
 
     const post = dbposts.posts.find(post => post.id === postId);
 

@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
-import Menu from '../src/components/Menu';
-import Loading from '../src/components/Loading';
-import dbposts from '../dbposts.json';
+import Menu from '../../src/components/Menu';
+import Loading from '../../src/components/Loading';
+import dbposts from '../../dbposts.json';
 import Link from 'next/link';
 
 export const Container = styled.div`
@@ -143,7 +143,7 @@ function PostCards() {
                         
                         if(index <= 2) {
                         return (
-                        <Link href={`/blog/${post.id}___${post.title}`}>
+                        <Link key={index} href={`/blog/${post.id}___${post.title}`}>
                         <Container.Card
                             backgroundImage={post.imageUrl}>
                             <div style={{ display: 'flex', flexDirection: 'column', margin: '4px', width: '80%' }}>
@@ -157,7 +157,7 @@ function PostCards() {
                     )}})}
                 </Container.Content>
 
-                <Container.General><button>Quero ler outros</button></Container.General>
+                <Container.General><Link href="/blog/all_posts"><button>Quero ler outros</button></Link></Container.General>
             </Container>
         </>
     )
