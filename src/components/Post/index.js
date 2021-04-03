@@ -67,6 +67,10 @@ PostStyle.Content = styled.div`
 
         border: 1px solid ${({ theme }) => theme.colors.boxShadowColor};
     }
+
+    p{
+        text-indent: 40px;
+    }
 `;
 
 function PostContent({ text, img, alt }) {
